@@ -1,3 +1,27 @@
+<script setup lang="ts">
+// Les 3 piliers NIRD
+const piliers = [
+  {
+    emoji: '🤝',
+    title: 'Inclusion',
+    description: 'Accès équitable au numérique et réduction de la fracture numérique pour tous les élèves',
+    color: 'from-nird-purple to-nird-cyan'
+  },
+  {
+    emoji: '🛡️',
+    title: 'Responsabilité',
+    description: 'Usage raisonné et réflexif de technologies souveraines et respectueuses des données personnelles',
+    color: 'from-nird-cyan to-purple-600'
+  },
+  {
+    emoji: '🌱',
+    title: 'Durabilité',
+    description: 'Lutte contre l\'obsolescence programmée par le choix de Linux, maîtrise des coûts et reconditionnement',
+    color: 'from-purple-600 to-nird-purple'
+  }
+]
+</script>
+
 <template>
     <!-- Hero Section -->
     <section id="accueil" class="container mx-auto px-4 py-16 md:py-24">
@@ -11,7 +35,7 @@
 
         <!-- Titre principal -->
         <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-nird-yellow via-nird-purple to-nird-cyan">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-nird-cyan via-nird-purple to-nird-yellow">
             Numérique Libre
           </span>
           <br />
@@ -20,20 +44,17 @@
 
         <!-- Sous-titre -->
         <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-          Pour un numérique <strong class="text-nird-yellow">Inclusif</strong>, 
+          Pour un numérique <strong class="text-nird-cyan">Inclusif</strong>, 
           <strong class="text-nird-purple">Responsable</strong> et 
-          <strong class="text-nird-cyan">Durable</strong> dans les établissements scolaires
+          <strong class="text-nird-yellow">Durable</strong> dans les établissements scolaires
         </p>
 
         <!-- Description contextuelle -->
         <div class="bg-gradient-to-r from-nird-purple/10 via-purple-900/20 to-nird-purple/10 rounded-3xl p-8 mb-8 border border-nird-purple/30">
-          <p class="text-gray-200 leading-relaxed mb-4">
+          <p class="text-lg text-gray-200 leading-relaxed mb-4">
             À l'heure où la fin du support de Windows 10 nous rappelle notre dépendance technologique et nous oblige à faire des choix, 
             un collectif enseignant issu de la <strong>Forge des communs numériques éducatifs</strong> invite les établissements scolaires 
             et les collectivités qui les accompagnent à s'engager progressivement vers un Numérique qui soit davantage Inclusif, Responsable et Durable.
-          </p>
-          <p class="text-gray-300 text-sm">
-            🎯 Rejoignez la démarche NIRD et participez à la construction d'un <strong class="text-nird-yellow">village numérique résistant</strong> !
           </p>
         </div>
 
@@ -59,8 +80,10 @@
     <!-- Les 3 Piliers NIRD -->
     <section id="piliers" class="container mx-auto px-4 py-16">
       <div class="text-center mb-12">
-        <h3 class="text-4xl font-bold text-white mb-4">Les 3 Piliers NIRD</h3>
-        <p class="text-gray-400">Au carrefour de la transformation numérique et de la transition écologique</p>
+        <h3 class="text-4xl font-bold text-white mb-4">Les 3 Piliers 
+          <strong class="text-transparent bg-clip-text bg-gradient-to-r from-nird-cyan via-nird-purple to-nird-yellow">NIRD</strong>
+        </h3>
+        <p class="text-lg text-gray-400">Au carrefour de la transformation numérique et de la transition écologique</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -83,7 +106,7 @@
           </h4>
 
           <!-- Description -->
-          <p class="text-gray-300 text-center leading-relaxed">
+          <p class="text-lg text-gray-300 text-center leading-relaxed">
             {{ pilier.description }}
           </p>
 
@@ -98,23 +121,11 @@
 
     <!-- Section Résistance Numérique -->
     <section id="resistance" class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+        <h3 class="text-4xl font-bold text-white mb-4"><strong class="text-nird-yellow">David</strong> contre <strong class="text-nird-purple">Goliath</strong></h3>
+        <p class="text-lg text-gray-400">Le Village Numérique Résistant</p>
+      </div>
       <div class="max-w-5xl mx-auto">
-        
-        <!-- Header avec métaphore Astérix -->
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-nird-purple/20 to-purple-900/20 rounded-full mb-6 border border-nird-purple/50">
-            <span class="text-3xl">🛡️</span>
-            <span class="text-lg font-semibold text-nird-yellow">David contre Goliath</span>
-            <span class="text-3xl">⚔️</span>
-          </div>
-          
-          <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">
-            Le Village Numérique Résistant
-          </h3>
-          <p class="text-xl text-gray-300">
-            Comment les établissements scolaires peuvent tenir tête aux Big Tech
-          </p>
-        </div>
 
         <!-- Le problème : Goliath numérique -->
         <div class="bg-gradient-to-br from-red-900/20 to-slate-900/50 rounded-3xl p-8 mb-8 border-2 border-red-500/30">
@@ -182,38 +193,32 @@
             </div>
           </div>
         </div>
-
-        <!-- Citation inspirante -->
-        <div class="mt-8 text-center">
-          <p class="text-lg italic text-gray-400">
-            "Une initiative <strong class="text-nird-purple">d'en bas</strong> pour montrer 
-            <strong class="text-nird-yellow">en haut</strong> qu'il y a urgence à agir."
-          </p>
-        </div>
       </div>
     </section>
 
     <!-- Section Origine & Lycée Carnot -->
     <section id="origine" class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12">
+        <h3 class="text-4xl font-bold text-white mb-4">L'origine du projet</h3>
+        <p class="text-lg text-gray-400">Au Cœur des Hauts-de-France</p>
+      </div>
+
       <div class="max-w-4xl mx-auto bg-gradient-to-br from-nird-purple/10 to-slate-900/50 rounded-3xl p-10 border border-nird-purple/30">
         <div class="flex items-start space-x-6">
           <div>
             <h3 class="text-3xl font-bold text-white mb-4">
               Né au Lycée Carnot de Bruay-la-Buissière
             </h3>
-            <p class="text-gray-300 leading-relaxed mb-6">
+            <p class="text-lg text-gray-300 leading-relaxed mb-6">
               Le projet NIRD est né au <strong class="text-nird-yellow">lycée Carnot</strong> dans les Hauts-de-France. 
               Cette expérience réussie démontre qu'il est possible de construire un numérique éducatif plus autonome, 
               plus durable, plus éthique. La démarche NIRD cherche maintenant à <strong class="text-nird-purple">faire essaimer</strong> 
               ce modèle vers un maximum d'établissements scolaires français.
             </p>
-            <p class="text-sm text-gray-400 mb-4">
-              🎯 Objectif : passer à l'échelle et fédérer les initiatives existantes
-            </p>
             
             <!-- Statut actuel -->
             <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-4">
-              <p class="text-amber-300 text-sm">
+              <p class="text-amber-300 text-base">
                 ⚠️ <strong>Cette démarche n'a pas encore de reconnaissance officielle.</strong> 
                 Elle provient du terrain et est dictée par un sentiment d'urgence. Rien ne pourra se faire à terme 
                 sans la mobilisation de nombreux acteurs et le soutien de l'institution.

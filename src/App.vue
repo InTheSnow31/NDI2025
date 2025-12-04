@@ -13,34 +13,12 @@ const menuItems = [
   { emoji: '❓', label: 'Pourquoi', href: '#pourquoi' },
 ]
 
-// Les 3 piliers NIRD
-const piliers = [
-  {
-    emoji: '🤝',
-    title: 'Inclusion',
-    description: 'Accès équitable au numérique et réduction de la fracture numérique pour tous les élèves',
-    color: 'from-nird-purple to-nird-cyan'
-  },
-  {
-    emoji: '🛡️',
-    title: 'Responsabilité',
-    description: 'Usage raisonné et réflexif de technologies souveraines et respectueuses des données personnelles',
-    color: 'from-nird-cyan to-purple-600'
-  },
-  {
-    emoji: '🌱',
-    title: 'Durabilité',
-    description: 'Lutte contre l\'obsolescence programmée par le choix de Linux, maîtrise des coûts et reconditionnement',
-    color: 'from-purple-600 to-nird-purple'
-  }
-]
-
 // Menu mobile toggle
 const mobileMenuOpen = ref(false)
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-nird-night via-slate-900 to-nird-night">
+  <div class="min-h-screen bg-gradient-to-bl from-nird-night via-nird-night to-nird-night">
     <!-- Header / Navigation -->
     <header class="sticky top-0 z-50 backdrop-blur-lg bg-nird-night/80 border-b border-nird-purple/30">
       <nav class="container mx-auto px-4 py-4">
