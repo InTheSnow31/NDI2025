@@ -52,26 +52,18 @@ async function uploadAndPlay() {
   <div id="floatingWindow">
     <h2>Convertir un MP3 en vidéo</h2>
 
-    <div ref="loading">
+    <div ref="loading" id="loading">
       <div class="spinner"></div> Conversion en cours...
     </div>
 
-    <input type="file" ref="mp3File" accept="audio/mp3">
-    <button :onclick="uploadAndPlay()">Envoyer et jouer</button>
+    <input class="text-[#333]" type="file" ref="mp3File" accept="audio/mp3">
+    <button class="text-[#333]" @click="uploadAndPlay()">Envoyer et jouer</button>
 
     <video ref="videoPlayer" controls></video>
   </div>
 </template>
 
 <style scoped>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  background-color: #f5f5f5;
-}
-
 /* Fenêtre flottante */
 #floatingWindow {
   position: fixed;
