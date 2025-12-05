@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DefiNational from "../views/DefiNational.vue";
+import AudioViz from "../views/AudioViz.vue";
 
 const DEFAULT_TITLE = "NDI2025";
 
@@ -8,6 +9,11 @@ const routes = [
     path: "/",
     name: "Accueil",
     component: DefiNational,
+  },
+  {
+    path: "/audio_viz",
+    name: "Convertisseur MP3 ➜ MP4",
+    component: AudioViz,
   },
 ];
 
