@@ -5,7 +5,6 @@ Intégré au site du défi national, l'input consiste en un jeu adapté de Snake
 Manger une pomme permet de rentrer la lettre dans l'input.
 
 Le Snake est disponible sur la [page d'accueil](https://ndi2025.catadev.org/).
-Le chargement est particulièrement long (sélection et affichage des pommes, lettres en rouge).
 Il y a également un bug où des pommes sont immangeables (passer dessus ne fait aucun effet).
 Finalement, il n'est pas peaufiné (gestion des bordures, mort lorsqu'on se mord la queue...)
 
