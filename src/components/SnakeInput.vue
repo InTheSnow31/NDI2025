@@ -24,7 +24,7 @@ function indexText(chars: IndexedChars | null = null, element: Element = props.r
   for (const childNode of element.childNodes)
     if (childNode.nodeType === Node.TEXT_NODE)
       [...(childNode.textContent ?? "")].forEach((char, idx) => { if (char in chars) chars[char]!.push([element, childNode, idx]) })
-  for (const childElem of element.children)
+  if (element.children) for (const childElem of element.children)
     indexText(chars, childElem)
 
   return chars
