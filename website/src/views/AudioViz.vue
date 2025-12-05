@@ -22,7 +22,7 @@ async function uploadAndPlay() {
   videoPlayer.value!.src = ""; // vide le player
 
   try {
-    const response = await fetch(import.meta.env.AUDIOVIZ_BACKEND_URL, {
+    const response = await fetch(import.meta.env.VITE_AUDIOVIZ_BACKEND_URL, {
       method: "POST",
       body: formData
     });
