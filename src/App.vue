@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, useTemplateRef, type ComponentPublicInstance } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import SnakeInput from './components/SnakeInput.vue';
 
-const view = useTemplateRef<ComponentPublicInstance>("view")
-const viewEl = computed<HTMLElement>(() => view.value?.$el)
+const mainElem = useTemplateRef("view")
 
 // Menu items avec emojis
 const menuItems = [
@@ -73,12 +72,11 @@ const mobileMenuOpen = ref(false)
       </nav>
     </header>
 
+    <main ref="view">
+      <SnakeInput v-if="mainElem !== null" :ref-elem="mainElem!" />
 
-    <SnakeInput v-if="viewEl" :ref-elem="view?.$el" />
-
-    <router-view v-slot="{ Component }">
-      <component :is="Component" ref="view" />
-    </router-view>
+      <RouterView />
+    </main>
 
     <!-- Footer -->
     <footer class="container mx-auto px-4 py-12 border-t border-nird-purple/30 mt-16">
