@@ -30,7 +30,6 @@ function indexText(chars: IndexedChars | null = null, element: Element = props.r
   return chars
 }
 
-let indexedChars = indexText()
 const apples: [string, HTMLSpanElement][] = []
 
 function appleSpanIdFromChar(char: string) {
@@ -71,6 +70,8 @@ onMounted(() => {
     snake.push([initialSnakeCoords[i]!, snakePart as HTMLDivElement])
   }
 
+  const indexedChars = indexText()
+
   Array.from(Object.entries(indexedChars).reduce<Map<ChildNode, [Element, [number, string][]]>>((acc, [char, occurrences]) => {
     if (!occurrences.length) return acc;
 
@@ -92,7 +93,7 @@ function eatApple(apple: (typeof apples)[number]) {
   model.value += apple[0]
 
   // Add new apple for removed letter
-  indexedChars = indexText()
+  const indexedChars = indexText()
   const [newAppleElem, childNode, newAppleIdx] = pickOne(indexedChars[apple[0]]!)
   makeApplesForElement(newAppleElem, childNode, [[newAppleIdx, apple[0]]])
 }
