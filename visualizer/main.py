@@ -15,11 +15,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Crée le dossier temp si nécessaire
-os.makedirs("temp", exist_ok=True)
+def clear_temp_folder():
+    temp_dir = "./temp"
+    for filename in os.listdir(temp_dir):
+        file_path = os.path.join(temp_dir, filename)
+        try:
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+        except Exception as e:
+            print(f"Erreur lors de la suppression du fichier {file_path}: {e}")
+
 
 @app.post("/convert")
 async def convert(file: UploadFile = File(...)):
+    clear_temp_folder()
     # Sauvegarde le MP3 temporairement
     mp3_path = f"temp/{uuid.uuid4()}.mp3"
     mp4_path = f"temp/{uuid.uuid4()}.mp4"
