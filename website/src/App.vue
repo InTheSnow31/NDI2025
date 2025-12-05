@@ -3,6 +3,7 @@ import { ref, useTemplateRef } from 'vue';
 import SnakeInput from './components/SnakeInput.vue';
 
 const mainElem = useTemplateRef("view")
+const snakeInputModel = ref("")
 
 // Menu items avec emojis
 const menuItems = [
@@ -73,7 +74,11 @@ const mobileMenuOpen = ref(false)
     </header>
 
     <main ref="view">
-      <SnakeInput v-if="mainElem !== null" :ref-elem="mainElem!" />
+      <SnakeInput v-if="mainElem !== null" :ref-elem="mainElem!" v-model="snakeInputModel" />
+      <div v-if="snakeInputModel.length" class="w-screen flex flex-col mt-3 p-2 bg-slate-400">
+        <p class="mx-auto">Snake input:</p>
+        <input readonly class="mx-auto rounded-sm bg-slate-200 text-slate-800" type="text" :value="snakeInputModel" />
+      </div>
 
       <RouterView />
     </main>
