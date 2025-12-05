@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { pickOne, rectsOverlap, wait } from '../utils';
 
 const model = defineModel<string>({ default: "" });
@@ -10,11 +10,11 @@ const props = withDefaults(defineProps<{
   speed?: number
   /** Snake segment size (square), in px */
   snakeSize?: number
-}>(), { speed: 1_000, snakeSize: 32 })
+}>(), { speed: 750, snakeSize: 32 })
 
 // In props.snakeSize
-const GRID_WIDTH = Math.ceil(props.refElem.clientWidth / props.snakeSize)
-const GRID_HEIGHT = Math.ceil(props.refElem.clientHeight / props.snakeSize)
+// const GRID_WIDTH = Math.ceil(props.refElem.clientWidth / props.snakeSize)
+const GRID_HEIGHT = ref(Math.ceil(props.refElem.clientHeight / props.snakeSize))
 
 
 type IndexedChars = Record<string, [Element, ChildNode, number][]>;
@@ -50,24 +50,28 @@ function makeApplesForElement(element: Element, childNode: ChildNode, idxChars: 
 
 const initialSnakePartIdPrefix = "snake-init-"
 type Coords = [number, number]
-const initialSnakeCoords: Coords[] = [
-  [3, Math.floor(GRID_HEIGHT / 2)],
-  [2, Math.floor(GRID_HEIGHT / 2)],
-  [1, Math.floor(GRID_HEIGHT / 2)],
-]
+const initialSnakeCoords = computed<Coords[]>(() => [
+  [3, Math.floor(GRID_HEIGHT.value / 2)],
+  [2, Math.floor(GRID_HEIGHT.value / 2)],
+  [1, Math.floor(GRID_HEIGHT.value / 2)],
+])
 const snake: [Coords, HTMLDivElement][] = [];
 // An index of snake
 let snakeHeadIdx: number = 0
 
-const snakeClasses = ["absolute", "bg-green-400", "rounded-sm", "p-1", "bg-clip-content"]
+const snakeClasses = ["absolute", "bg-green-400", "rounded-sm", "p-1", "bg-clip-content", "z-50"]
 
-onMounted(() => {
+onMounted(async () => {
+  await wait(1_000);
+
+  GRID_HEIGHT.value = Math.ceil(props.refElem.clientHeight / props.snakeSize)
+
   // Get initial snake
   for (let i = 0; i < 3; ++i) {
     const snakePart = document.getElementById(`${initialSnakePartIdPrefix}${i}`)
     if (!snakePart) throw new Error(`Unexpected missing initial snake part`)
 
-    snake.push([initialSnakeCoords[i]!, snakePart as HTMLDivElement])
+    snake.push([initialSnakeCoords.value[i]!, snakePart as HTMLDivElement])
   }
 
   const indexedChars = indexText()
